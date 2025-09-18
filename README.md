@@ -2,26 +2,24 @@
 CS 3383 Class Project
 
 ## GitHub Link
-https://github.com/proph-et/uidaho-cs-3383-nitrogen-interactive
-
+[https://github.com/Scroogly/The-Orange-Ninja]
 ## Discord Link
-https://discord.gg/2A5ut4xN3J
+[https://discord.gg/pVWmwXvP]
 
 ## Gantt Chart Link
 [insert here]
 
 
 ## Team Leads
-1) Andersen Westphal (git, IT stuff)  
-2) Trevor DeVries (main programmer)  
-2+) Yoshi Werner (secondary programmer)  
-3) Eric Johnson (QA specialist)  
-4) Haddie Meyer (project manager)  
-5) Miles Kison (AI specialist)  
-6) Torry Chmelik (version manager)
+TL1: Aiden 
+TL2: Ro 
+TL3: Jaskaran
+TL4: Safal
+TL5: Syed
+TL6: Gurneet
 
 ## Team Name
-Nitrogen Interactive
+Orange Games
 
 ## Team Logo
 <img src="docs/team_logo.png" alt="drawing" width="420"/>
@@ -29,17 +27,6 @@ Nitrogen Interactive
 [temporary]
 
 ## Game Name
-### Return of the Exiled: Where’s my sandwich?
+### The Orange Ninja
 
 ## Game Concept
-### Top down rpg 
-+ class based combat
-  + 3 classes
-    + tank
-    + support
-    + dps
-  + Skill tree
-+ 3 maps
-  + 2 enemies types per map
-  + 1 large mini boss
-  + 1 boss per map
