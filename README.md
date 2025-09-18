@@ -24,8 +24,6 @@ Orange Games
 ## Team Logo
 <img src="docs/Orange Games Logo.png" alt="drawing" width="420"/>
 
-[temporary]
-
 ## Game Name
 ### The Orange Ninja
 
