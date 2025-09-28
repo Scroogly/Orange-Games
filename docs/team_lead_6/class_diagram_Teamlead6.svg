@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900">
+  <text x="700.0" y="40" fill="black" style="font-family:Segoe UI,Arial; font-size:28px; font-weight:bold;" text-anchor="middle">Orange Game — Audio System (UML Class Diagram)</text>
+  <rect x="60" y="120" width="320" height="180" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="60" y1="156" x2="380" y2="156" stroke="black" stroke-width="1.6"/>
+  <text x="220.0" y="146" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">IAudioPlayable «interface»</text>
+  <line x1="60" y1="168" x2="380" y2="168" stroke="black" stroke-width="1.6"/>
+  <text x="72" y="184" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ play(): void</text>
+  <text x="72" y="208" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ pause(): void</text>
+  <text x="72" y="232" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ stop(): void</text>
+  <text x="72" y="256" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ setVolume(v: float): void</text>
+  <rect x="520" y="110" width="340" height="200" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="520" y1="146" x2="860" y2="146" stroke="black" stroke-width="1.6"/>
+  <text x="690.0" y="136" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioClip «abstract»</text>
+  <text x="532" y="166" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- id: string</text>
+  <text x="532" y="190" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- filePath: string</text>
+  <text x="532" y="214" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- loop: bool</text>
+  <line x1="520" y1="230" x2="860" y2="230" stroke="black" stroke-width="1.6"/>
+  <text x="532" y="246" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ load(): void</text>
+  <text x="532" y="270" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ unload(): void</text>
+  <rect x="1000" y="120" width="320" height="180" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="1000" y1="156" x2="1320" y2="156" stroke="black" stroke-width="1.6"/>
+  <text x="1160.0" y="146" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioEvent «enum»</text>
+  <text x="1012" y="176" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">PLAYER_JUMP</text>
+  <text x="1012" y="200" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">ATTACK</text>
+  <text x="1012" y="224" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">ITEM_PICKUP</text>
+  <text x="1012" y="248" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">BOSS_ENTER</text>
+  <text x="1012" y="272" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">GAME_OVER</text>
+  <rect x="520" y="350" width="300" height="170" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="520" y1="386" x2="820" y2="386" stroke="black" stroke-width="1.6"/>
+  <text x="670.0" y="376" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">MusicTrack</text>
+  <text x="532" y="406" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- bpm: int</text>
+  <text x="532" y="430" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- isBoss: bool</text>
+  <line x1="520" y1="446" x2="820" y2="446" stroke="black" stroke-width="1.6"/>
+  <text x="532" y="462" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ setLoop(start: float, end: float): void</text>
+  <rect x="860" y="350" width="300" height="170" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="860" y1="386" x2="1160" y2="386" stroke="black" stroke-width="1.6"/>
+  <text x="1010.0" y="376" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">SoundEffect</text>
+  <text x="872" y="406" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- cooldown: float</text>
+  <text x="872" y="430" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- variant: string</text>
+  <line x1="860" y1="446" x2="1160" y2="446" stroke="black" stroke-width="1.6"/>
+  <text x="872" y="462" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ canPlay(now: float): bool</text>
+  <rect x="60" y="560" width="330" height="180" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="60" y1="596" x2="390" y2="596" stroke="black" stroke-width="1.6"/>
+  <text x="225.0" y="586" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioBus (Mixer)</text>
+  <text x="72" y="616" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- name: string</text>
+  <text x="72" y="640" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- volume: float</text>
+  <text x="72" y="664" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- muted: bool</text>
+  <line x1="60" y1="680" x2="390" y2="680" stroke="black" stroke-width="1.6"/>
+  <text x="72" y="696" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ setVolume(v: float): void</text>
+  <text x="72" y="720" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ mute(flag: bool): void</text>
+  <rect x="460" y="560" width="360" height="200" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="460" y1="596" x2="820" y2="596" stroke="black" stroke-width="1.6"/>
+  <text x="640.0" y="586" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioManager</text>
+  <text x="472" y="616" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- buses: Map&lt;string, AudioBus&gt;</text>
+  <text x="472" y="640" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- registry: Map&lt;string, AudioClip&gt;</text>
+  <text x="472" y="664" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- settings: AudioSettings</text>
+  <line x1="460" y1="680" x2="820" y2="680" stroke="black" stroke-width="1.6"/>
+  <text x="472" y="696" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ registerClip(c: AudioClip): void</text>
+  <text x="472" y="720" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ playMusic(id: string): void</text>
+  <text x="472" y="744" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ playSFX(id: string): void</text>
+  <text x="472" y="768" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ onEvent(e: AudioEvent, data?): void</text>
+  <rect x="860" y="560" width="280" height="180" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="860" y1="596" x2="1140" y2="596" stroke="black" stroke-width="1.6"/>
+  <text x="1000.0" y="586" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioSettings</text>
+  <text x="872" y="616" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- masterVol: float</text>
+  <text x="872" y="640" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- musicVol: float</text>
+  <text x="872" y="664" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- sfxVol: float</text>
+  <line x1="860" y1="680" x2="1140" y2="680" stroke="black" stroke-width="1.6"/>
+  <text x="872" y="696" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ save(): void</text>
+  <text x="872" y="720" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ load(): void</text>
+  <rect x="1000" y="560" width="320" height="180" rx="8" ry="8" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="1000" y1="596" x2="1320" y2="596" stroke="black" stroke-width="1.6"/>
+  <text x="1160.0" y="586" fill="black" style="font-family:Segoe UI,Arial; font-size:20px; font-weight:bold;" text-anchor="middle">AudioEventRouter</text>
+  <text x="1012" y="616" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">- listeners: Map&lt;AudioEvent, List&lt;fn&gt;&gt;</text>
+  <line x1="1000" y1="632" x2="1320" y2="632" stroke="black" stroke-width="1.6"/>
+  <text x="1012" y="648" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ subscribe(e: AudioEvent, fn): void</text>
+  <text x="1012" y="672" fill="black" style="font-family:Segoe UI,Arial; font-size:16px; font-weight:normal;" text-anchor="start">+ emit(e: AudioEvent, data?): void</text>
+  <line x1="520" y1="190" x2="380" y2="210" stroke="black" stroke-width="2" stroke-dasharray="6,6"/>
+  <polygon points="380,210 394,198 394,222" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="670" y1="350" x2="670" y2="310" stroke="black" stroke-width="2"/>
+  <line x1="670" y1="310" x2="690" y2="310" stroke="black" stroke-width="2"/>
+  <polygon points="690,310 678,298 678,322" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="1010" y1="350" x2="1010" y2="310" stroke="black" stroke-width="2"/>
+  <line x1="1010" y1="310" x2="890" y2="310" stroke="black" stroke-width="2"/>
+  <polygon points="890,310 902,298 902,322" stroke="black" fill="white" stroke-width="2"/>
+  <polygon points="460,650 444,660 428,650 444,640" stroke="black" fill="white" stroke-width="2"/>
+  <line x1="428" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="650" x2="390" y2="650" stroke="black" stroke-width="2"/>
+  <polygon points="820,650 836,660 852,650 836,640" stroke="black" fill="black" stroke-width="2"/>
+  <line x1="852" y1="650" x2="860" y2="650" stroke="black" stroke-width="2"/>
+  <line x1="820" y1="620" x2="1000" y2="620" stroke="black" stroke-width="2"/>
+  <text x="910" y="612" fill="black" style="font-family:Segoe UI,Arial; font-size:14px; font-weight:normal;" text-anchor="middle">uses</text>
+  <line x1="1160" y1="560" x2="1160" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="1160" y1="300" x2="1000" y2="300" stroke="black" stroke-width="2"/>
+  <polygon points="1000,300 1012,288 1012,312" stroke="black" fill="black" stroke-width="2"/>
+  <text x="1170" y="430" fill="black" style="font-family:Segoe UI,Arial; font-size:14px; font-weight:normal;" text-anchor="start">emits</text>
+  <line x1="640" y1="560" x2="640" y2="310" stroke="black" stroke-width="2"/>
+  <text x="646" y="430" fill="black" style="font-family:Segoe UI,Arial; font-size:14px; font-weight:normal;" text-anchor="start">manages</text>
+</svg>
