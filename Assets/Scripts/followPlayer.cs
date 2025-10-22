@@ -1,3 +1,5 @@
+/*
+
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -15,3 +17,4 @@ public class CameraFollow : MonoBehaviour
         transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
     }
 }
+*/
