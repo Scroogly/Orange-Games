@@ -72,10 +72,5 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // --- Optional debug visual for attack range ---
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
+    
 }
