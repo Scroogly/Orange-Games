@@ -1,41 +1,81 @@
-
-
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 5f;   // Speed of left-right movement
-    public float jumpForce = 7f;   // Jump power
+    public Player playerData;          // data object
+    public float moveSpeed = 5f;
+    public float jumpForce = 7f;
+    public int attackDamage = 20;
+    public float attackRange = 1f;     // attack reach distance
+    public LayerMask enemyLayer;       // layer to detect enemies
 
     private Rigidbody2D rb;
-    private bool isGrounded = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerData = new Player(100); // starting HP = 100
     }
 
     void Update()
     {
-        // Move Left/Right (A/D or Arrow Keys)
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        HandleInput();
+    }
 
-        // Jump when pressing Space
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+    void HandleInput()
+    {
+        float move = Input.GetAxis("Horizontal");
+        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+
+        if (Input.GetButtonDown("Jump"))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            isGrounded = false;
+        }
+
+        // Attack (F key)
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Attack();
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // --- ATTACK ACTION ---
+    void Attack()
     {
-        // Detect if player touches the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        playerData.Attack(); // just logs for now
+
+        // If you later want to hit enemies:
+        // Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
+        // foreach (Collider2D hit in hits)
+        // {
+        //     Debug.Log("Enemy hit!");
+        // }
+
+        // Play animation or effect here later
+    }
+
+    // --- DAMAGE FROM ENEMY ---
+    public void ApplyDamage(int amount)
+    {
+        playerData.TakeDamage(amount);
+        Debug.Log("Player took " + amount + " damage. HP: " + playerData.health);
+
+        if (!playerData.IsAlive())
         {
-            isGrounded = true;
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player Died!");
+        gameObject.SetActive(false);
+    }
+
+    // --- Optional debug visual for attack range ---
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
