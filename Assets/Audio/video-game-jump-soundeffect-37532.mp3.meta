@@ -1,8 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: 5cd66736250d2264ca60239bf9ebe408
-=======
-guid: 5cd66736250d2264ca60239bf9ebe408
+guid: f29bb84310792e141a6209a072060373
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -24,4 +21,3 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> Stashed changes
