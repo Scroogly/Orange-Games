@@ -749,9 +749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d08a202f0bb204a88ad0482d9a4910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  target: {fileID: 1935087814}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 20}
 --- !u!1 &553466192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2130,7 @@ GameObject:
   - component: {fileID: 1935087813}
   - component: {fileID: 1935087812}
   - component: {fileID: 1935087811}
-  - component: {fileID: 1935087810}
+  - component: {fileID: 1935087815}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -2141,18 +2138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1935087810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935087809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21555b6fc318bbe4ca059c7d1629e208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!61 &1935087811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2214,7 +2199,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2225,7 +2210,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1935087813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2299,6 +2284,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1935087815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f46b4796a0204ab09be0b0ab654f6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveSpeed: 5
+  jumpForce: 7
+  attackDamage: 20
+  attackRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1940174647
 GameObject:
   m_ObjectHideFlags: 0

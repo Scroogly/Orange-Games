@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyController  : MonoBehaviour
 {
     public float speed = 2f;
     [Header("Patrol range (relative to start X)")]
