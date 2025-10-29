@@ -7,7 +7,7 @@ CS 3383 Class Project
 [https://discord.gg/pVWmwXvP]
 
 ## Gantt Chart Link
-[https://vandalsuidaho-my.sharepoint.com/:x:/g/personal/weav0256_vandals_uidaho_edu/EXQa_xqIH8hAm0NI_mahafkBB0VtbY2Ecsk_VwNUoRSg2g]
+[insert here]
 
 
 ## Team Leads

@@ -3,5 +3,6 @@
   <Project Path="NewAssembly.csproj" />
   <Project Path="PlayerTest.csproj" />
   <Project Path="Scripts.csproj" />
+  <Project Path="StressTest.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>
