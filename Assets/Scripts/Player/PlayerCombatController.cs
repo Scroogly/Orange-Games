@@ -23,7 +23,6 @@ public class PlayerCombatController : MonoBehaviour
     }
 
 
-
     /// Detects enemies within range and applies damage.
     private void PerformAttack()
     {

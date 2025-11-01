@@ -6,17 +6,13 @@
 
 using UnityEngine;
 
-/// <summary>
 /// Handles item pickups and interactions.
-/// </summary>
 public class PlayerInteractionController : MonoBehaviour
 {
     [SerializeField] private float _pickupRange = 1.5f;
     [SerializeField] private LayerMask _itemLayer;
 
-    /// <summary>
     /// Handles input for interaction actions.
-    /// </summary>
     public void HandleInteractionInput()
     {
         if (Input.GetKeyDown(KeyCode.E))
