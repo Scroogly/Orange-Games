@@ -1254,7 +1254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
       propertyPath: m_Name
-      value: Square (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
       propertyPath: m_TagString
@@ -1336,6 +1336,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1935087816}
+    - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935087821}
+    - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935087820}
+    - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935087819}
   m_SourcePrefab: {fileID: 100100000, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
 --- !u!1 &831537348
 GameObject:
@@ -2074,6 +2083,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1373230158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373230160}
+  - component: {fileID: 1373230159}
+  m_Layer: 0
+  m_Name: PauseSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1373230159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373230158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1dea827a1954dc7a5eb2ada9ccd5f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+--- !u!4 &1373230160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373230158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1378593853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,13 +2354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74666821c7ca7464c8ee7ffb61062fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  jumpForce: 7
-  attackDamage: 20
-  attackRange: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1935087816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,6 +2371,53 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1935087819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4479ceccdab444adbda8897184e0f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::PlayerInteractionController
+  _pickupRange: 1.5
+  _itemLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1935087820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc09c2e3afaa4f6ba9c0ccc99eed2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::PlayerCombatController
+  _attackRange: 1.2
+  _attackDamage: 25
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1935087821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ffe1075adce4dd289ec67990fe530e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::PlayerMovementController
+  _moveSpeed: 5
+  _jumpForce: 7
 --- !u!1 &1940174647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,3 +2963,4 @@ SceneRoots:
   - {fileID: 6608386168388722869}
   - {fileID: 382305528}
   - {fileID: 213477087849849873}
+  - {fileID: 1373230160}
