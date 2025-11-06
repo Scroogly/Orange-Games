@@ -1,9 +1,9 @@
 ﻿<Solution>
-  <Project Path="PlayMode.csproj" />
+  <Project Path="Scripts.csproj" />
   <Project Path="NewAssembly.csproj" />
+  <Project Path="PlayMode.csproj" />
   <Project Path="PlayerTest.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="EnemyTest.csproj" />
-  <Project Path="Scripts.csproj" />
   <Project Path="TL3_Tests.csproj" />
 </Solution>
