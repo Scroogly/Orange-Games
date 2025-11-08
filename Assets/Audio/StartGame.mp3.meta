@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Audio/Music/Winner.mp3.meta
-guid: 9f4bbed506360634ea791f5572f73b6f
-========
-guid: f94a9e9865d4b47469a81a66ba38ab6d
->>>>>>>> Stashed changes:Assets/Audio/Music/Win.mp3.meta
+guid: 57fc08250fefe1c468eda5a3e56b1193
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
