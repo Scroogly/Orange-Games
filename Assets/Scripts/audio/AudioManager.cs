@@ -1,102 +1,206 @@
 /********************************************
  * File: AudioManager.cs
- * Author: Orange Games Team (Gurneet)
- * Description: Central audio manager for BGM/SFX,
- * volume, mute, pause/resume, and fade switching.
+ * Author: Orange Games Team
+ * Description: Centralized audio system for SFX/BGM,
+ * crossfades, pause state, and mixer routing.
  ********************************************/
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
 
+/// Singleton manager for game audio: SFX, BGM, volumes, pause/resume.
 public class AudioManager : MonoBehaviour
 {
+    [Header("Mixer & Groups")]
+    [SerializeField] private AudioMixer _masterMixer;
+    [SerializeField] private AudioMixerGroup _bgmGroup;
+    [SerializeField] private AudioMixerGroup _sfxGroup;
+
+    [Header("Library")]
+    [SerializeField] private SoundLibrary _library;
+
+    [Header("Players")]
+    [SerializeField] private AudioSource _bgmSourceA;
+    [SerializeField] private AudioSource _bgmSourceB;
+    [SerializeField] private AudioSource _sfxSourcePrefab;
+
+    [Header("Exposed Params")]
+    [SerializeField] private string _bgmVolParam = "BGMVolume";
+    [SerializeField] private string _sfxVolParam = "SFXVolume";
+
     public static AudioManager Instance { get; private set; }
 
-    [Header("Mixer & Parameters")]
-    [SerializeField] private AudioMixer _mixer;
-    [SerializeField] private string _musicParam = "MusicVol";
-    [SerializeField] private string _sfxParam = "SFXVol";
+    private AudioSource _activeBGM;
+    private AudioSource _inactiveBGM;
+    private float _savedBGMTime = 0f;
+    private bool _isMuted = false;
 
-    [Header("Sources")]
-    [SerializeField] private AudioSource _musicSource;
-    [SerializeField] private AudioSource _sfxSource;
-
-    [Header("Clips")]
-    [SerializeField] private AudioClip _mainTheme;
-    [SerializeField] private AudioClip _bossTheme;
-
-    const string PP_MUSIC = "pp_music_vol";
-    const string PP_SFX   = "pp_sfx_vol";
-    bool _muted;
-
-    void Awake() {
+    void Awake()
+    {
+        // Singleton pattern
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        LoadVolumes();
+
+        // Basic validation (coding standard: validate & log)
+        Debug.Assert(_masterMixer != null, "MasterMixer not assigned!");
+        Debug.Assert(_bgmGroup != null && _sfxGroup != null, "Mixer groups not assigned!");
+        Debug.Assert(_library != null, "SoundLibrary not assigned!");
+
+        // Configure BGM sources
+        if (_bgmSourceA == null) _bgmSourceA = CreateBGMSource("BGM_A");
+        if (_bgmSourceB == null) _bgmSourceB = CreateBGMSource("BGM_B");
+
+        _activeBGM = _bgmSourceA;
+        _inactiveBGM = _bgmSourceB;
     }
 
-    void Start() {
-        if (_mainTheme != null) PlayMainTheme();
+    /// Plays a short SFX by id from the library. Includes fallback if missing.
+    public void PlaySFX(string sfxId, float pitch = 1f, float volume = 1f)
+    {
+        var clip = _library.GetSFX(sfxId);
+        if (clip == null)
+        {
+            // A01: Missing mapping → fallback + warning
+            var fallback = _library.GetFallbackSFX();
+            if (fallback != null)
+            {
+                SpawnOneShot(fallback, pitch, volume);
+                Debug.LogWarning($"SFX '{sfxId}' missing. Played fallback.");
+            }
+            else
+            {
+                Debug.LogWarning($"SFX '{sfxId}' missing and no fallback set.");
+            }
+            return;
+        }
+        SpawnOneShot(clip, pitch, volume);
     }
 
-    // ---- BGM ----
-    public void PlayMainTheme() => FadeToTrack(_mainTheme, 0.8f);
-    public void PlayBossTheme() => FadeToTrack(_bossTheme, 0.8f);
+    /// Starts or switches looping BGM by id (crossfade optional).
+    public void PlayBGM(string bgmId, float fadeSeconds = 0.75f)
+    {
+        var clip = _library.GetBGM(bgmId);
+        if (clip == null)
+        {
+            // A02 exception: continue without BGM, log
+            Debug.LogWarning($"BGM '{bgmId}' missing. Continuing without BGM.");
+            return;
+        }
 
-    void FadeToTrack(AudioClip clip, float fade) {
-        if (clip == null) return;
-        StartCoroutine(FadeRoutine(clip, fade));
+        // Prepare target source
+        _inactiveBGM.clip = clip;
+        _inactiveBGM.loop = true;
+        _inactiveBGM.outputAudioMixerGroup = _bgmGroup;
+        _inactiveBGM.Play();
+
+        if (fadeSeconds > 0f && _activeBGM.isPlaying)
+        {
+            StartCoroutine(CrossfadeBGM(_activeBGM, _inactiveBGM, fadeSeconds));
+        }
+        else
+        {
+            _activeBGM.Stop();
+            SwapActive();
+        }
     }
 
-    IEnumerator FadeRoutine(AudioClip next, float t) {
-        float start = _musicSource.volume;
-        for (float a = 0; a < t; a += Time.unscaledDeltaTime) {
-            _musicSource.volume = Mathf.Lerp(start, 0f, a / t);
+    /// Boss switch: fade out current and fade in boss track (crossfade).
+    public void SwitchToBossBGM(string bossBgmId, float fadeSeconds = 1.0f)
+    {
+        var clip = _library.GetBGM(bossBgmId);
+        if (clip == null)
+        {
+            // A05 exception: fallback continue
+            Debug.LogWarning($"Boss BGM '{bossBgmId}' missing. Continuing current BGM.");
+            return;
+        }
+        PlayBGM(bossBgmId, fadeSeconds);
+    }
+
+    /// Adjusts mixer volumes in dB (slider [0..1] mapped to -80..0 dB).
+    public void SetBGMVolume01(float value01) => SetLinear01ToDB(_bgmVolParam, value01);
+    public void SetSFXVolume01(float value01) => SetLinear01ToDB(_sfxVolParam, value01);
+
+    /// Saves & suspends audio for pause. Resume restores state.
+    public void PauseAll()
+    {
+        _savedBGMTime = _activeBGM.isPlaying ? _activeBGM.time : _savedBGMTime;
+        AudioListener.pause = true; // lightweight global pause/duck
+    }
+
+    public void ResumeAll()
+    {
+        AudioListener.pause = false;
+        if (_activeBGM.clip != null)
+        {
+            _activeBGM.time = _savedBGMTime;
+            if (!_activeBGM.isPlaying) _activeBGM.Play();
+        }
+    }
+
+    public void SetMuted(bool muted)
+    {
+        _isMuted = muted;
+        AudioListener.volume = _isMuted ? 0f : 1f;
+    }
+
+    // ----------------- Internals -----------------
+
+    private AudioSource CreateBGMSource(string nameTag)
+    {
+        var go = new GameObject(nameTag);
+        go.transform.SetParent(transform);
+        var src = go.AddComponent<AudioSource>();
+        src.outputAudioMixerGroup = _bgmGroup;
+        src.playOnAwake = false;
+        src.loop = true;
+        src.spatialBlend = 0f;
+        return src;
+    }
+
+    private void SpawnOneShot(AudioClip clip, float pitch, float volume)
+    {
+        Debug.Assert(_sfxSourcePrefab != null, "Assign an SFX source prefab (with AudioSource).");
+        var src = Instantiate(_sfxSourcePrefab, transform);
+        src.outputAudioMixerGroup = _sfxGroup;
+        src.pitch = pitch;
+        src.volume = volume;
+        src.spatialBlend = 0f;
+        src.PlayOneShot(clip);
+        Destroy(src.gameObject, clip.length + 0.05f);
+    }
+
+    private IEnumerator CrossfadeBGM(AudioSource from, AudioSource to, float seconds)
+    {
+        float t = 0f;
+        to.volume = 0f;
+        while (t < seconds)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.Clamp01(t / seconds);
+            from.volume = 1f - k;
+            to.volume = k;
             yield return null;
         }
-        _musicSource.clip = next;
-        _musicSource.loop = true;
-        _musicSource.Play();
-        for (float a = 0; a < t; a += Time.unscaledDeltaTime) {
-            _musicSource.volume = Mathf.Lerp(0f, 1f, a / t);
-            yield return null;
-        }
-        _musicSource.volume = 1f;
+        from.Stop();
+        from.volume = 1f;
+        to.volume = 1f;
+        SwapActive();
     }
 
-    // ---- SFX ----
-    public void PlaySFX(AudioClip clip, float vol = 1f) {
-        if (clip == null) return;
-        _sfxSource.PlayOneShot(clip, Mathf.Clamp01(vol));
+    private void SwapActive()
+    {
+        var temp = _activeBGM;
+        _activeBGM = _inactiveBGM;
+        _inactiveBGM = temp;
     }
 
-    // ---- Volume (sliders 0..1) with log mapping for mixer ----
-    public void SetMusicVolume01(float v) {
-        SetLogVolume(_musicParam, v);
-        PlayerPrefs.SetFloat(PP_MUSIC, v);
-    }
-    public void SetSFXVolume01(float v) {
-        SetLogVolume(_sfxParam, v);
-        PlayerPrefs.SetFloat(PP_SFX, v);
-    }
-
-    void SetLogVolume(string param, float v01) {
-        // Convert 0..1 slider to decibels (-80..0). Avoid -Inf.
-        float dB = (v01 <= 0.0001f) ? -80f : Mathf.Lerp(-30f, 0f, Mathf.Sqrt(v01));
-        _mixer.SetFloat(param, dB);
-    }
-
-    void LoadVolumes() {
-        float mv = PlayerPrefs.GetFloat(PP_MUSIC, 0.8f);
-        float sv = PlayerPrefs.GetFloat(PP_SFX, 0.8f);
-        SetMusicVolume01(mv);
-        SetSFXVolume01(sv);
-    }
-
-    // ---- Mute / Pause ----
-    public void ToggleMute() {
-        _muted = !_muted;
-        AudioListener.pause = _muted;        // pauses all sources reliably
+    private void SetLinear01ToDB(string param, float v01)
+    {
+        // Map 0..1 to -80..0 dB; clamp for safety
+        float v = Mathf.Clamp01(v01);
+        float dB = Mathf.Lerp(-80f, 0f, v);
+        _masterMixer.SetFloat(param, dB);
     }
 }

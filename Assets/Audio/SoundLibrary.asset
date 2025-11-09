@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de84d15b6db524948b15e13626baa091, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: NewAssembly::SoundLibrary
+  _sfx:
+  - id: Jump
+    clip: {fileID: 8300000, guid: 1084bfb6f523cc146854d3cf27610317, type: 3}
+  - id: Attack
+    clip: {fileID: 8300000, guid: 6feb7d58a259f5a4ab46001f974f84e3, type: 3}
+  - id: buttonclick
+    clip: {fileID: 8300000, guid: f0cd262d4c5f238488273fb831df1442, type: 3}
+  - id: Hit
+    clip: {fileID: 8300000, guid: a18dc9e50443a614fa41bc1fae5c820a, type: 3}
+  - id: Pickup
+    clip: {fileID: 8300000, guid: c2e47f0d33c20fc4099d7e0373e80c00, type: 3}
+  - id: Pause
+    clip: {fileID: 8300000, guid: 79d31cf14fefea846bd9e7f21e6eb3ae, type: 3}
+  - id: Unpause
+    clip: {fileID: 8300000, guid: b1f51c3099ff7bd499b57b3f42975e5f, type: 3}
+  _fallbackSfx: {fileID: 0}
+  _bgm:
+  - id: BGM
+    clip: {fileID: 8300000, guid: fcb132057affc7146a6bacc7da80ef4d, type: 3}
+  - id: boss
+    clip: {fileID: 8300000, guid: 72ffec339f883ad48b2a7dd5dcb6f254, type: 3}
+  - id: winner
+    clip: {fileID: 8300000, guid: 9f4bbed506360634ea791f5572f73b6f, type: 3}
+  - id: 
+    clip: {fileID: 0}
