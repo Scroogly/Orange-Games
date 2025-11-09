@@ -1123,8 +1123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6211a232cefdf0647bce5a9d44514210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::AudioHotkeys
-  musicClip: {fileID: 8300000, guid: 5cd66736250d2264ca60239bf9ebe408, type: 3}
-  sfxClip: {fileID: 8300000, guid: f29bb84310792e141a6209a072060373, type: 3}
 --- !u!4 &748203855
 Transform:
   m_ObjectHideFlags: 0
