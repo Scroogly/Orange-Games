@@ -991,8 +991,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374860d3840477c41bdf21674bae16e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::AudioManager
-  musicOut: {fileID: 0}
-  sfxOut: {fileID: 0}
+  _masterMixer: {fileID: 0}
+  _bgmGroup: {fileID: 0}
+  _sfxGroup: {fileID: 0}
+  _library: {fileID: 0}
+  _bgmSourceA: {fileID: 0}
+  _bgmSourceB: {fileID: 0}
+  _sfxSourcePrefab: {fileID: 0}
+  _bgmVolParam: BGMVolume
+  _sfxVolParam: SFXVolume
 --- !u!4 &519890297
 Transform:
   m_ObjectHideFlags: 0
