@@ -828,6 +828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d08a202f0bb204a88ad0482d9a4910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  target: {fileID: 1935087823}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &553466192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,6 +2720,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: NewAssembly::PlayerMovementController
   _moveSpeed: 5
   _jumpForce: 7
+--- !u!4 &1935087823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7651742587549625245, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+  m_PrefabInstance: {fileID: 790648852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1940174647
 GameObject:
   m_ObjectHideFlags: 0
