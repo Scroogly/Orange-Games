@@ -16,12 +16,10 @@ public class Player
         _inventory = new List<Item>();
     }
 
-
     public void Move(float newX, float newY)
     {
         _position = (newX, newY);
     }
-
 
     public void TakeDamage(int amount)
     {
@@ -35,22 +33,25 @@ public class Player
         _health = System.Math.Min(_health + amount, MAX_HEALTH);
     }
 
-
     public bool IsAlive() => _health > 0;
 
     public int GetHealth() => _health;
 
-    // public void Pickup(Item item)
-    // {
-    //     _inventory.Add(item);
-    // }
+    /// Adds an item to the player's inventory.
+    public void Pickup(Item item)
+    {
+        _inventory.Add(item);
+    }
 
-    // public List<Item> GetInventory() => _inventory;
+    /// Returns all items in the player's inventory.
+    public List<Item> GetInventory() => _inventory;
 
-    // public void EquipWeapon(Weapon weapon)
-    // {
-    //     _weapon = weapon;
-    // }
+    /// Equips a weapon to the player.
+    public void EquipWeapon(Weapon weapon)
+    {
+        _weapon = weapon;
+    }
 
-    // public Weapon GetWeapon() => _weapon;
+    /// Returns the player's currently equipped weapon.
+    public Weapon GetWeapon() => _weapon;
 }
