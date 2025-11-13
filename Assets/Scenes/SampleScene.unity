@@ -914,7 +914,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -939,7 +939,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.7, y: 15.7, z: -10}
+  m_LocalPosition: {x: -3, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d08a202f0bb204a88ad0482d9a4910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  target: {fileID: 0}
+  target: {fileID: 1935087823}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &524187165
@@ -3142,6 +3142,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: NewAssembly::PlayerMovementController
   _moveSpeed: 5
   _jumpForce: 7
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 28b8a826-f4aa-4f4c-ac2c-ffdf64dc2ce1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5cb1e1ef-5b38-4c20-a355-4d60b2365f14
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 0
+    m_Flags: 0
+  jumpAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: db3749cb-0327-4697-b282-076b14cfd5ff
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!4 &1935087823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7651742587549625245, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+  m_PrefabInstance: {fileID: 790648852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1940174647
 GameObject:
   m_ObjectHideFlags: 0
