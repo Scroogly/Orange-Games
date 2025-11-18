@@ -23,7 +23,18 @@ public class PlayerMovementController : MonoBehaviour
         Debug.Assert(_rb != null, "Rigidbody2D missing on Player!");
     }
 
+    /// // Original code from Unity tutorials
+    // private void HandleJump()
+    // {
+    //     if (Input.GetButtonDown("Jump") && isGrounded)
+    //     {
+    //         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    //     }
+    // }
+
+    
     /// Handles movement and jump input each frame.
+
     public void HandleMovementInput()
     {
         float move = Input.GetAxis("Horizontal");

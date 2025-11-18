@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerPowerBase.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Base MonoBehaviour for power-ups.
  *              Uses helper classes to demonstrate
  *              dynamic and static binding patterns.
