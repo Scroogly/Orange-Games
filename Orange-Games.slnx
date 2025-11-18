@@ -1,6 +1,6 @@
 ﻿<Solution>
-  <Project Path="NewAssembly.csproj" />
   <Project Path="Scripts.csproj" />
+  <Project Path="NewAssembly.csproj" />
   <Project Path="PlayMode.csproj" />
   <Project Path="PlayerTest.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
