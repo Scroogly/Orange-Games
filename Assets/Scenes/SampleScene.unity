@@ -472,6 +472,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &342187755 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4386047240174120530, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+  m_PrefabInstance: {fileID: 6608386168388722869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &382305528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -480,6 +485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1673481762352567057, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1673481762352567057, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.56
@@ -523,6 +532,18 @@ PrefabInstance:
     - target: {fileID: 3984169707322958553, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984169707322958553, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555586783979473191, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555586783979473191, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8803904890054012937, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: speed
@@ -1613,6 +1634,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1935087819}
+    - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935087824}
+    - targetCorrespondingSourceObject: {fileID: 5626323637901359649, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1935087827}
   m_SourcePrefab: {fileID: 100100000, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
 --- !u!1 &829262240
 GameObject:
@@ -2419,6 +2446,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1192608067 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4386047240174120530, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+  m_PrefabInstance: {fileID: 382305528}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1373230158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74666821c7ca7464c8ee7ffb61062fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  winLocation: {fileID: 902699302}
+  winRadius: 1.5
 --- !u!114 &1935087816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3045,6 +3079,9 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1935087819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,10 +3094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4479ceccdab444adbda8897184e0f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::PlayerInteractionController
-  _pickupRange: 1.5
-  _itemLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  _interactionRange: 1.5
 --- !u!114 &1935087820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,11 +3107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc09c2e3afaa4f6ba9c0ccc99eed2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::PlayerCombatController
-  _attackRange: 1.2
-  _attackDamage: 25
+  _attackRange: 1.5
+  _attackDamage: 10
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &1935087821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,13 +3124,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ffe1075adce4dd289ec67990fe530e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::PlayerMovementController
-  _moveSpeed: 5
-  _jumpForce: 7
+  _moveSpeed: 8
+  _jumpForce: 10
+  _speedMultiplier: 1
 --- !u!4 &1935087823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7651742587549625245, guid: a74a5b6403fc03e4e8746e13d22b5707, type: 3}
   m_PrefabInstance: {fileID: 790648852}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1935087824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5728aa5e79edf49fe91df4e4dfd0425a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::PlayerContactDamage
+  contactDamage: 10
+  damageCooldown: 1
+--- !u!114 &1935087827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935087809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a161d9bb2264951a89cbf93b964a2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::PlayerPowerUp
+  powerName: Player Power
+  bonusMaxHealth: 50
+  speedMultiplier: 3.5
+  durationSeconds: 10
+  tintTargets:
+  - {fileID: 342187755}
+  - {fileID: 1192608067}
+  activeTintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1940174647
 GameObject:
   m_ObjectHideFlags: 0
@@ -3744,6 +3813,10 @@ PrefabInstance:
     - target: {fileID: 3984169707322958553, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984169707322958553, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8803904890054012937, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: leftOffset
