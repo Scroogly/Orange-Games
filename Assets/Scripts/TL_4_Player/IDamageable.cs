@@ -1,6 +1,6 @@
 /********************************************
  * File: IDamageable.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Interface for any object that can take damage.
  ********************************************/
 

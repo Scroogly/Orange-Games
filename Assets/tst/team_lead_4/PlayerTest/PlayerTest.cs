@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerTest.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Unit tests for player health,
  *              movement, combat, contact
  *              damage, and power-ups.

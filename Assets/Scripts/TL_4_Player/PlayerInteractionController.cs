@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerInteractionController.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Handles generic interaction
  *              input (placeholder system).
  ********************************************/

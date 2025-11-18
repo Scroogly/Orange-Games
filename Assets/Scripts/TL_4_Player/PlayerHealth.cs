@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerHealth.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Handles player HP, damage,
  *              healing, max HP changes,
  *              and death behavior.

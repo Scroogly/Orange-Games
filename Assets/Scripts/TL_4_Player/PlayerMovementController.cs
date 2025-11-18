@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerMovementController.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Handles player movement and
  *              jumping through Rigidbody2D.
  ********************************************/

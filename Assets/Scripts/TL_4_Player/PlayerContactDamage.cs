@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerContactDamage.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Applies periodic damage when
  *              the player is touching enemies.
  ********************************************/

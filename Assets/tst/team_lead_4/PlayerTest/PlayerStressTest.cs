@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerStressTest.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Stress test for spawning large
  *              numbers of player instances.
  ********************************************/

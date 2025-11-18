@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerController.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Coordinates movement, combat,
  *              interaction, powers, and
  *              win/lose conditions.

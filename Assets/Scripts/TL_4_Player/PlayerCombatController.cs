@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerCombatController.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Handles melee attack input,
  *              hit detection, and applying
  *              damage to enemies.

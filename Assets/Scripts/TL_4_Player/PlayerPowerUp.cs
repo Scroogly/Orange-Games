@@ -1,6 +1,6 @@
 /********************************************
  * File: PlayerPowerUp.cs
- * Author: Orange Ninja Team
+ * Author: Safal Shrestha
  * Description: Demonstrates DYNAMIC and STATIC binding
  *              using helper classes that return different
  *              power-up stat values.
