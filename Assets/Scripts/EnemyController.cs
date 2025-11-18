@@ -1,6 +1,7 @@
 using UnityEngine;
-
-public class EnemyController : MonoBehaviour
+ 
+[RequireComponent(typeof(EnemyHealthSimple))]
+ public class EnemyController : MonoBehaviour
 {
     public float speed = 2f;
     [Header("Patrol range (relative to start X)")]
