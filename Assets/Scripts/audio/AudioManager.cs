@@ -9,6 +9,7 @@ using UnityEngine.Audio;
 using System.Collections;
 
 /// Singleton manager for game audio: SFX, BGM, volumes, pause/resume.
+/// STATIC BINDING EXAMPLE: THIS CLASS DOES NTO USE VIRTUAL METHODS, SO ALL FUNCTION CALLS ARE DECIDED AT A COMPILE TIME
 public class AudioManager : MonoBehaviour
 {
     [Header("Mixer & Groups")]
@@ -38,6 +39,7 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         // Singleton pattern
+        //UNITY CALLS AWAKE () USING DYNAMIC BINDING UNITY CHOOSES AT A RUN TIME BUT INSIDE THIS CLASS, ALL METHODS LIKE PLAYSFX()&PLAYBGM ARE STATICALLY BOUND BECAUSE THEY ARE NOT VIRTUAL
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -56,6 +58,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// Plays a short SFX by id from the library. Includes fallback if missing.
+    /// STATIC BINDING: COMPILER ALREADY KNOWS AT COMPILE TIME EHICH VERSION OF SFX TO CALL
     public void PlaySFX(string sfxId, float pitch = 1f, float volume = 1f)
     {
         var clip = _library.GetSFX(sfxId);
@@ -78,6 +81,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// Starts or switches looping BGM by id (crossfade optional).
+    /// STATIC BINDING NO OVERIDING POSSIBLE - ALWAYS CALLS THIS EXACT METHOD.
     public void PlayBGM(string bgmId, float fadeSeconds = 0.75f)
     {
         var clip = _library.GetBGM(bgmId);
