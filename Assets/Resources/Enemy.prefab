@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 6555586783979473191}
   - component: {fileID: 4553739803323416627}
   - component: {fileID: 8803904890054012937}
-  m_Layer: 0
+  - component: {fileID: 46281498504431588}
+  - component: {fileID: 1932964925706305445}
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,9 +32,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 60, y: 9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5352125918434505360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4386047240174120530
@@ -82,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1498411081857581943, guid: 10c4b91489e7555468183eed8c18f1cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4553739803323416627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,8 +160,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.48648623, y: 0.035731167}
+    oldSize: {x: 9.79, y: 9.76}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -178,7 +181,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae1e2c04fcda4846a260691867c48fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  speed: 4
-  leftOffset: -3
-  rightOffset: 3
+  speed: 3.5
+  leftOffset: -11
+  rightOffset: 11
   turnTolerance: 0.02
+  sprite: {fileID: 0}
+--- !u!114 &46281498504431588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984169707322958553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efeeeb3680654fad97cf9da399cc10a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::EnemyHealthSimple
+  maxHealth: 50
+  currentHealth: 50
+--- !u!114 &1932964925706305445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984169707322958553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2b3d73b91006145adae3abce7f1d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NewAssembly::EnemyShooter
+  bulletPrefab: {fileID: 5299915935068164388, guid: 6ca37bd40e990004cbca10e2db4d7178, type: 3}
+  firePoint: {fileID: 5352125918434505360}
+  fireRate: 2
+--- !u!1 &5858358321672613803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5352125918434505360}
+  m_Layer: 3
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5352125918434505360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858358321672613803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 3.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1673481762352567057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
