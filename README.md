@@ -1,5 +1,5 @@
 # CS 3383
-CS 3383 Class Project
+CS 3383 Class Project.
 
 ## GitHub Link
 [https://github.com/Scroogly/The-Orange-Ninja]
