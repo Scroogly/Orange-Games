@@ -27,7 +27,7 @@ public class PlayerCombatController : MonoBehaviour
         }
     }
 
-    /// Performs a melee attack by detecting enemies within range.
+    /// Performs attack by detecting enemies within range.
     private void PerformAttack()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _attackRange, _enemyLayer);

@@ -159,8 +159,8 @@ public class PowerStatsBase
 // DYNAMIC BINDING: These values are used (Health: 50, Speed: 3, Duration: 10)
 public class PowerStatsEnhanced : PowerStatsBase
 {
-    // "override" enables DYNAMIC BINDING - this version is called through base reference
-    // Replace "override" with "new" for STATIC BINDING - base version is called instead
+    // "override" enables DYNAMIC BINDING
+    // Replace "override" with "new" for STATIC BINDING
     public override int GetBonusHealth()
     {
         return 50;

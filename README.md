@@ -1,6 +1,9 @@
 # Orange-Games Project Overview
 
-This README provides context on the structure and layout of the "Orange-Games" Unity project. It is intended to assist LLMs and developers in understanding the codebase.
+## GitHub Link
+[https://github.com/Scroogly/The-Orange-Ninja]
+## Discord Link
+[https://discord.gg/VNMGXGby]
 
 ## Project Structure
  The project follows a standard Unity project layout with some custom organization for team collaboration.
