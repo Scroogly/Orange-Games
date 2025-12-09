@@ -480,6 +480,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 46281498504431588, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: dropPrefab
+      value: 
+      objectReference: {fileID: 3546068023944541385, guid: 8ed873537ff432143ace95008c69f629, type: 3}
+    - target: {fileID: 46281498504431588, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: efb6def4e3557534d9c9b7b8c8e9da35, type: 3}
+    - target: {fileID: 46281498504431588, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: sceneToLoadOnDrop
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 1673481762352567057, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -28280,6 +28292,10 @@ MonoBehaviour:
   _requireWinLocation: 0
   _winLocation: {fileID: 0}
   _winRadius: 1.5
+  _spawnPickupOnWin: 1
+  _pickupPrefab: {fileID: 3546068023944541385, guid: 8ed873537ff432143ace95008c69f629, type: 3}
+  _nextSceneName: Level2
+  _nextSceneAsset: {fileID: 102900000, guid: efb6def4e3557534d9c9b7b8c8e9da35, type: 3}
 --- !u!114 &1935087816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28986,6 +29002,14 @@ PrefabInstance:
       propertyPath: dropPrefab
       value: 
       objectReference: {fileID: 3546068023944541385, guid: 8ed873537ff432143ace95008c69f629, type: 3}
+    - target: {fileID: 46281498504431588, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: efb6def4e3557534d9c9b7b8c8e9da35, type: 3}
+    - target: {fileID: 46281498504431588, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
+      propertyPath: sceneToLoadOnDrop
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 1673481762352567057, guid: 02711ad227ce8d841a971ee61c06f009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
