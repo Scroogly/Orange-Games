@@ -116,7 +116,7 @@ public class PlayerComponentTests
         Object.DestroyImmediate(go);
     }
 
-    // POWER-UP TESTS (UPDATED FOR NEW SYSTEM)-----------------------------
+    // POWER-UP TESTS -----------------------------
 
     /// Power-up should use dynamic binding stats (50 health, 3x speed).
     [Test]

@@ -11,28 +11,29 @@ public class AudioWiringTester : MonoBehaviour
     {
         Debug.Log("=== AudioWiringTester START ===");
 
-        // Listener sanity
+        // Listener sanity , do we have an audio listener in the scene is it paused, what is the volume
         var listener = FindObjectOfType<AudioListener>();
         Debug.Log($"AudioListener found? {listener != null}, pause={AudioListener.pause}, vol={AudioListener.volume}");
         AudioListener.pause = false; AudioListener.volume = 1f;
 
-        // Mixer sanity
+        // Mixer sanity debug log: Mixed parameteers exist :BGM VOLUME SFX VOLUME
         if (mixer == null) { Debug.LogError("Mixer NOT assigned on tester."); return; }
         float v;
         bool gotBgm = mixer.GetFloat("BGMVolume", out v);
         bool gotSfx = mixer.GetFloat("SFXVolume", out _);
         Debug.Log($"Mixer params present? BGM={gotBgm}, SFX={gotSfx}, BGMVolume={v} dB");
+        // THEN SETS THEM TO 0 DB(FULL VOLUME):
         mixer.SetFloat("BGMVolume", 0f);
         mixer.SetFloat("SFXVolume", 0f);
 
-        // AudioManager presence
+        // AudioManager PREFAB IS MISSING - THIS STOPSpresence
         if (AudioManager.Instance == null) { Debug.LogError("AudioManager.Instance is NULL (not in scene?)."); return; }
 
-        // Try to play BGM
+        // Try to play BGM WITH NO FADE
         Debug.Log($"Playing BGM id='{bgmId}'");
         AudioManager.Instance.PlayBGM(bgmId, 0f);
 
-        // Try to play SFX
+        // Try to play SFX JUMP OSUND ONE TIME
         Debug.Log($"Playing SFX id='{sfxId}'");
         AudioManager.Instance.PlaySFX(sfxId);
 

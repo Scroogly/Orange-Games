@@ -23,6 +23,7 @@ public class PlayerActionSFX : MonoBehaviour
     private bool _isPaused = false;
 
     void Start()
+    //Dynamic Binding: Unity decides at run time which start() to call, because many objects can have start() in different scripts
     {
         // Validation — Orange Games coding standards
         Debug.Assert(AudioManager.Instance != null,
@@ -35,6 +36,7 @@ public class PlayerActionSFX : MonoBehaviour
     }
 
     void Update()
+    //Dynamic Binding: Unity calls this method based on the collider that triggered it
     {
         HandleJumpInput();
         HandlePauseInput();
@@ -44,6 +46,7 @@ public class PlayerActionSFX : MonoBehaviour
     // JUMP (Space key)
     // ----------------------------------------------------
     private void HandleJumpInput()
+    // Static Binding: This is a normal private function.The compiler knows ehere itis
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -56,6 +59,7 @@ public class PlayerActionSFX : MonoBehaviour
     // PAUSE & UNPAUSE (Escape key)
     // ----------------------------------------------------
     private void HandlePauseInput()
+    // Internal method, no override, no vortual - compile- time binding
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
