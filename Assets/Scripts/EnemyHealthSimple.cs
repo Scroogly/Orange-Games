@@ -56,6 +56,8 @@ public class EnemyHealthSimple : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        // Drop logic is now handled by PlayerController for level completion
+        /*
         if (dropPrefab != null)
         {
             GameObject droppedItem = Instantiate(dropPrefab, transform.position, Quaternion.identity);
@@ -67,6 +69,7 @@ public class EnemyHealthSimple : MonoBehaviour, IDamageable
                 pickup.SetSceneName(sceneToLoadOnDrop);
             }
         }
+        */
 
         Destroy(gameObject);
     }

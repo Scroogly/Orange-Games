@@ -7,6 +7,9 @@
  ********************************************/
 
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 /// Central manager for all player subsystems.
 [RequireComponent(typeof(PlayerMovementController))]
@@ -18,6 +21,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _requireWinLocation = false;
     [SerializeField] private Transform _winLocation;
     [SerializeField] private float _winRadius = 1.5f;
+
+    [Header("Level Progression")]
+    [Tooltip("If true, a pickup will spawn at the last enemy's location instead of ending the game immediately.")]
+    [SerializeField] private bool _spawnPickupOnWin = true;
+    [SerializeField] private GameObject _pickupPrefab;
+    [SerializeField] private string _nextSceneName;
+#if UNITY_EDITOR
+    [SerializeField] private SceneAsset _nextSceneAsset;
+    private void OnValidate() {
+        if (_nextSceneAsset != null) _nextSceneName = _nextSceneAsset.name;
+    }
+#endif
 
     private PlayerMovementController _movement;
     private PlayerCombatController _combat;
@@ -67,14 +82,22 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Enemies defeated: {_defeatedEnemies}/{_totalEnemies}");
 
         // Check win condition after each enemy defeat
-        CheckWinCondition();
+        CheckWinCondition(enemy.transform.position);
     }
 
     /// Checks if the player has reached the win condition
-    private void CheckWinCondition()
+    private void CheckWinCondition(Vector3 lastEnemyPosition = default)
     {
         // First check: all enemies must be defeated
         if (_defeatedEnemies < _totalEnemies) {
+            return;
+        }
+
+        // If we want to spawn a pickup instead of winning immediately
+        if (_spawnPickupOnWin && _pickupPrefab != null)
+        {
+            SpawnLevelCompletePickup(lastEnemyPosition);
+            // We don't trigger "Win" yet, we let the pickup handle the transition
             return;
         }
 
@@ -122,5 +145,21 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_winLocation.position, _winRadius);
+    }
+
+    private void SpawnLevelCompletePickup(Vector3 position)
+    {
+        // Prevent spawning multiple times if this gets called repeatedly
+        if (_hasWon) return;
+        _hasWon = true; // Mark as "won" so we don't spawn again, but don't disable controls yet
+
+        Debug.Log("All enemies defeated! Spawning portal.");
+        GameObject pickup = Instantiate(_pickupPrefab, position, Quaternion.identity);
+        
+        var transition = pickup.GetComponent<SceneTransitionPickup>();
+        if (transition != null && !string.IsNullOrEmpty(_nextSceneName))
+        {
+            transition.SetSceneName(_nextSceneName);
+        }
     }
 }

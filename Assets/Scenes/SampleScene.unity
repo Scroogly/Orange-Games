@@ -28292,6 +28292,10 @@ MonoBehaviour:
   _requireWinLocation: 0
   _winLocation: {fileID: 0}
   _winRadius: 1.5
+  _spawnPickupOnWin: 1
+  _pickupPrefab: {fileID: 3546068023944541385, guid: 8ed873537ff432143ace95008c69f629, type: 3}
+  _nextSceneName: Level2
+  _nextSceneAsset: {fileID: 102900000, guid: efb6def4e3557534d9c9b7b8c8e9da35, type: 3}
 --- !u!114 &1935087816
 MonoBehaviour:
   m_ObjectHideFlags: 0
