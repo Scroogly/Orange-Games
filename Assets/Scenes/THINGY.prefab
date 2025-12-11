@@ -91,4 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898faeddf6a13b5438767ecddd770163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NewAssembly::SceneTransitionPickup
-  sceneToLoad: 
+  sceneToLoad: Level2
+  sceneAsset: {fileID: 102900000, guid: efb6def4e3557534d9c9b7b8c8e9da35, type: 3}
