@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class HealthChangedEvent : UnityEvent<int, int> { }
 
+
 /// Manages all player health-related logic.
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -21,6 +22,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public HealthChangedEvent OnHealthChanged;
     [SerializeField] private UnityEvent onDeath;
+
+    private bool isGameOver = false;
+
 
     private void Awake()
     {
@@ -96,10 +100,33 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     /// Handles player death and restarting the level.
-    private void HandleDeath()
+   private void HandleDeath()
+{
+    Debug.LogWarning("Player has died. Game Over.");
+
+    isGameOver = true;   // mark game over
+
+    onDeath?.Invoke();   // this can show the GAME OVER text
+
+    // Freeze the entire game (physics + Update)
+    Time.timeScale = 0f;
+
+    // Remove or comment out the auto-reload
+    // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+}
+
+private void Update()
+{
+    // If the game is over and the player presses any key, restart
+    if (isGameOver && Input.anyKeyDown)
     {
-        Debug.LogWarning("Player has died. Restarting level...");
-        onDeath?.Invoke();
+        // Restore normal time
+        Time.timeScale = 1f;
+
+        // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+}
+
+
 }
